@@ -7,9 +7,11 @@ So first let's observe MVP on Android and then we'll dig into it's implementaion
  - **Model:** holds the business logic of our application and is responsible for all data interactions in the application.
  - **View:** a passive interface that is responsible for all the UI/UX related things, shows data to the user and reacts to the input events 
  - **Presenter:** acts as the middle man, provides view with the data from model and defines reactions to user input which view forwards to it.
-##MVP On Android
+ 
+## MVP On Android
 As default android architecture wasn't developed with good attention to **separation of concerns**, MVP is used to separate UI/UX (Activity, Fragment, ...) from I/O and application's business logic. But how this separation helps us?
-###Why? 
+
+### Why? 
 In default Android application architecture, activities (or their replacements, like fragments and ...) are **god objects** and extremely **coupled** to both UI interface and business logic or data manipulations. In this god object, literally *everything is connected to everything* and the code is **over complicated.** So changing a little part of the code requires to update the entire code and takes a lot of effort. Also because different parts are connected, no part is **reusable** or **testable**.
 
 Moreover, handling the background tasks in this code is really a pain in the neck. Apart from having to handle numerous edge cases for **configuration changes**, the probability of having **memory leaks** grows exponentially as your code gets more and more complex.

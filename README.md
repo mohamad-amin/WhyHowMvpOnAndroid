@@ -188,9 +188,9 @@ Finally activity (view) forwards any button click to presenter so the user input
 EasyMVP does all the hard work here, like saving/restoring presenter's stMVate in and preventing any **memory leaks** by releasing the view in presenter in lifecycle events. You can proceed to the next example to see all EasyMVP features.
 
 ## Best practice: EasyMVP and Clean Architecture
-Comming soon: we're publishing an example to observer all features of EasyMVP in developing a feature rich Android application based on Clean Architecture and MVP pattern.
+**Comming soon:** we're publishing an example to observer all features of EasyMVP in developing a feature rich Android application based on Clean Architecture and MVP pattern.
 ## How does EasyMVP work?
-Comming soon: we're going to publish an article on how EasyMVP works to help us build better Android applications. 
+**Comming soon:** we're going to publish an article on how EasyMVP works to help us build better Android applications. 
 
 #### Refrences
 1: There are a lot of articles out there that show why MVP should be used in Android applications, some of them are listed here:

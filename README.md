@@ -11,7 +11,7 @@ So first let's observe MVP on Android and then we'll dig into its implementaion 
 	  * [MvpPresenter](#mvppresenter-code)
 	  * [MvpActivity](#mvpactivity-code)
   * [Best Practice](#best-practice-easymvp-and-clean-architecture)
-  * [How does EasyMVP work?](#how-does-easymvp-work)
+  * [How does EasyMVP work?](#how-does-easymvp-work?)
   * [Refrences](#refrences)
 
 
@@ -51,7 +51,10 @@ The **model** layer is only responsible for data interactions and all the **busi
 
 The **presenter** layer is a new part which isn't available in the plain old android architecture. This layer almost acts as the brain of the application and **decides** everything about the application's behavior. Presenter in android is a **pure java** class that we're able to do **unit tests** on it. It fills the view layer with the data that it retrieves from the model layer.
 
-With this separation, there's no god object and each layer is completely independent from another one. This way our code isn't complicated, different parts can be easily **maintained**, **tested**, **debugged** and **reused**. As view saves and restores presenter and handles the presenter's lifecycle, the **background tasks** are now performed in presenter without concerning about the lifecycle events and configuration changes. They are saved/restored automatically while we're sure there'll be **no memory leak**. 
+With this separation, there's no god object and each layer follows this connection rule:
+**Picture of MVP design: Model <-> View <-> Presenter**
+
+This way our code isn't complicated, different parts can be easily **maintained**, **tested**, **debugged** and **reused**. As view saves and restores presenter and handles the presenter's lifecycle, the **background tasks** are now performed in presenter without concerning about the lifecycle events and configuration changes. They are saved/restored automatically while we're sure there'll be **no memory leak**. 
 
 **Abstraction** of these layers helps us make sure that no layer knows anything about the implementation of any other layer and each part of the application is completely **decoupled**.
 
@@ -83,21 +86,14 @@ public class MvpPresenter extends RxPresenter<MvpView> {
 
     private List<String> items;
 
-    public void reloadData() {
+   public void reloadData() {
         this.items = null;
         loadData();
     }
 
     private void loadData() {
 
-        /**
-         * Checking nullity because {@link Presenter#getView()} is {@link javax.annotation.Nullable}
-         */
-        if (getView() != null) {
-            getView().showLoading();
-        } else {
-            return;
-        }
+        getView().showLoading();
 
         /**
          * Loading our data from a Web API using an {@link rx.Observable} from RxJava
@@ -109,14 +105,16 @@ public class MvpPresenter extends RxPresenter<MvpView> {
                         items -> {
                             // Showing data when items are retrieved
                             this.items = items;
-                            if (getView() != null) {
+                            // Checking if the view is still accessible
+                            if (isViewAttached()) {
                                 getView().showData(items);
                             }
                         },
                         throwable -> {
-                            // Printing the log and showing error
+                            // Printing the log and showing the error
                             throwable.printStackTrace();
-                            if (getView() != null) {
+                            // Checking if the view is still accessible
+                            if (isViewAttached()) {
                                 getView().showError();
                             }
                         }
@@ -126,7 +124,7 @@ public class MvpPresenter extends RxPresenter<MvpView> {
          * Adding the {@link Subscription} to the presenter so
          * it will automatically get unsubscribed at {@link RxPresenter#onDestroyed()}
          */
-        addSubscription(subscription);
+        this.addSubscription(subscription);
 
     }
 

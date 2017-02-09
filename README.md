@@ -83,7 +83,7 @@ public class MvpPresenter extends RxPresenter<MvpView> {
 
     private List<String> items;
 
-    private void reloadData() {
+    public void reloadData() {
         this.items = null;
         loadData();
     }

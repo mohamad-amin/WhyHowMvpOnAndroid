@@ -7,11 +7,12 @@ So first let's observe MVP on Android and then we'll dig into it's implementaion
 	  * [Why?](#why)
 	  * [How MVP solves these problems?](#how-mvp-solves-these-problems)
   * [Starting Guide](#starting-guide-using-easymvp-to-implement-mvp-on-android)
-	  * [MvpView](#mvpview-code:)
-	  * [MvpPresenter](#mvppresenter-code:)
-	  * [MvpActivity](#mvpactivity-code:)
+	  * [MvpView](#mvpview-code)
+	  * [MvpPresenter](#mvppresenter-code)
+	  * [MvpActivity](#mvpactivity-code)
   * [Best Practice](#best-practice-easymvp-and-clean-architecture)
   * [How does EasyMVP work?](#how-does-easymvp-work?)
+  * [Refrences](#refrences)
 
 
 ## What Is MVP?
@@ -205,7 +206,7 @@ EasyMVP does all the hard work here, like saving/restoring presenter's stMVate i
 ## How does EasyMVP work?
 **Comming soon**: we're going to publish an article on how EasyMVP works to help us build better Android applications. 
 
-#### Refrences
+### Refrences
 1: There are a lot of articles out there that show why MVP should be used in Android applications, some of them are listed here:
 
  - https://antonioleiva.com/mvp-android/

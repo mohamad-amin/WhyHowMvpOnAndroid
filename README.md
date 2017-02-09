@@ -56,21 +56,15 @@ public class MvpPresenter extends RxPresenter<MvpView> {
 
     private List<String> items;
 
-    private void reloadData() {
+    public void reloadData() {
         this.items = null;
         loadData();
     }
 
     private void loadData() {
 
-        /**
-         * Checking nullity because {@link Presenter#getView()} is {@link javax.annotation.Nullable}
-         */
-        if (getView() != null) {
-            getView().showLoading();
-        } else {
-            return;
-        }
+        // Informing the view that the data loading is started
+        getView().showLoading();
 
         /**
          * Loading our data from a Web API using an {@link rx.Observable} from RxJava

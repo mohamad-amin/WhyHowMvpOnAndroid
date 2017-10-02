@@ -17,7 +17,7 @@ So first let's observe MVP on Android and then we'll dig into its implementaion 
 
 ## What Is MVP?
 
-<center>![MVP architectural pattern](https://magenic.com/media/1530/presenter-view-model-1-mvp-pattern-for-android-jeff-angellini.png) </center>
+![MVP architectural pattern](https://magenic.com/media/1530/presenter-view-model-1-mvp-pattern-for-android-jeff-angellini.png)
 <br/>
 
 [MVP](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter) stands for Model View Presenter and is an **architectural pattern** that separates an application into three layers:
@@ -28,7 +28,7 @@ So first let's observe MVP on Android and then we'll dig into its implementaion 
  
 As mentioned [here](https://martinfowler.com/eaaDev/PassiveScreen.html), there is a variation of MVP with **Passive View**. In passive view (***which is considered in this article***), the view layer is just a slave of the presenter, meaning that it just **forwards inputs** to presenter and **obeys its commands**. This way testing the layers **independently** gets a lot easier.
  
-##MVP On Android
+## MVP On Android
 
 As default android architecture wasn't developed with good attention to **separation of concerns**, MVP is used to separate UI/UX (Activity, Fragment, ...) from I/O and application's business logic. But how this separation helps us?
 ###Why? 
@@ -38,10 +38,8 @@ Moreover, handling the background tasks in this code is really a pain in the nec
 Adding another parts and features to this code is also extremely sorrowful because you'll probably need to check most of the code and update it!
 
 Finally you'll find multiple bugs which are not at all easy to even find, let alone **debugging** and solving them. 
-###How MVP solves these problems?
-<center>
- ![MVP On Android](http://i2.wp.com/www.tinmegali.com/wp-content/uploads/2016/03/MVP_2-en.png?resize=768%2C595) 
- </center>
+### How MVP solves these problems?
+![MVP On Android](http://i2.wp.com/www.tinmegali.com/wp-content/uploads/2016/03/MVP_2-en.png?resize=768%2C595)
 <br/>
 
 With separating the application into three main layers, the **view** which is normally the activity or fragment is only responsible for the UI/UX part, like showing data to the user, handling animations, forwarding user input to presenter and navigating between screens.  
@@ -61,15 +59,13 @@ This way our code isn't complicated, different parts can be easily **maintained*
 ## **Starting Guide**: Using EasyMVP to implement MVP on Android
 In this example we're going to fetch data from a remote server and show it in our activity as a `ListView`.  We'll use **EasyMVP** to implement MVP pattern in our approach. So as mentioned above, the `activity` is going to play the **view** role, the **presenter** is going to be a  java class and the **model** retrieves information from the remote server and provides a `RxJava Observable` for the presenter to use. 
 
-<center> 
 ![Simple MVP example](https://cms-assets.tutsplus.com/uploads/users/1308/posts/26206/image/action_diagram.png)
-</center>
 </br>
 
 These classes show how the above idea can be easily implemented using *only a few annotations* from **EasyMVP** :
 
 
-####**MvpView** code:
+#### **MvpView** code:
 
 ```java
 public interface MvpView {
@@ -79,7 +75,7 @@ public interface MvpView {
 }
 ```
 
-####**MvpPresenter** code:
+#### **MvpPresenter** code:
 
 ```java
 public class MvpPresenter extends RxPresenter<MvpView> {
@@ -140,7 +136,7 @@ public class MvpPresenter extends RxPresenter<MvpView> {
 
 ```
 
-####**MvpActivity** code:
+#### **MvpActivity** code:
 
 ```java
 @ActivityView(presenter = MvpPresenter.class, layout = R.layout.activity_mvp)

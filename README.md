@@ -19,7 +19,6 @@ So first let's observe MVP on Android and then we'll dig into its implementaion 
 
 <p align="center"> 
     <img src="https://magenic.com/media/1530/presenter-view-model-1-mvp-pattern-for-android-jeff-angellini.png">
-    MVP architectural pattern
 </p>
 
 <br/>
@@ -48,7 +47,6 @@ Finally you'll find multiple bugs which are not at all easy to even find, let al
 
 <p align="center"> 
     <img src="http://i2.wp.com/www.tinmegali.com/wp-content/uploads/2016/03/MVP_2-en.png?resize=768%2C595">
-    MVP On Android
 </p>
 <br/>
 
@@ -73,7 +71,6 @@ In this example we're going to fetch data from a remote server and show it in ou
 
 <p align="center"> 
     <img src="https://cms-assets.tutsplus.com/uploads/users/1308/posts/26206/image/action_diagram.png">
-    A simple MVP example
 </p>
 <br/>
 
